@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>salary finder</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+</head>
+<style>
+    .login{
+           padding-top:4%;
+    }
+    .form-inline{padding-top:3%;}
+
+    h1{text-align:center;}
+
+    .mb-3{text-align: center;}
+
+
+    #input{
+    position: relative;
+    height:18px;
+    width:400px;
+    font-size:12pt;
+    border: thin solid #666;
+    border-radius:5px;
+    margin: auto;}
+
+    .login{
+  background-color: #d9d9d9;
+  border-radius: 5px;
+  height: 500px;
+  width: 1000px;
+  text-align: center;
+  max-width: 1000px;
+  margin: auto;
+}
+
+    #button {
+    height:36px;
+    width:180px;
+    font-size:12pt;
+    border: thin solid #666;
+    border-radius:5px;
+    text-align: center;
+    background-color: black;
+    display: inline-block;
+    color: white;
+  }
+    
+</style>
+<body>
+    <div class="login">
+        <h1>Predict Salary Analysis</h1>
+
+        <!-- Main Input For Receiving Query to our ML -->
+        <form class="form-inline" action="{{ url_for('predict')}}" method="post">
+            <div class="mb-3">
+                <label for="exp">Experience:</label>
+                <input id = "input" name="exp" type="number" class="form-control" id="exp" required="required" />
+                <div id="expinfo" class="form-text">Enter your experience in years.</div>
+            </div>
+            <div class="mb-3">
+                <label for="testscore">Test Score:</label>
+                <input id = "input" name="test" type="number" class="form-control" id="testscore" required="required" />
+                <div id="testinfo" class="form-text">On a scale of 1 to 10.</div>
+            </div>
+            <div class="mb-3">
+                <label for="interscore">Interview Score:</label>
+                <input id = "input" name="iscore" type="number" class="form-control" id="interscore" required="required" />
+                <div id="interinfo" class="form-text">On a scale of 1 to 10.</div>
+            </div>
+            <button id = "button" type="submit" class="btn btn-primary">Predict</button>
+        </form>
+
+        <br>
+        <br>
+        {{ prediction_text }}
+
+    </div>
+
+
+</body>
+</html>
